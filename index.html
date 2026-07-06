@@ -6,14 +6,15 @@
 <title>Texas State Roleplay Staff Guide</title>
 
 <style>
-body {
+html, body {
     margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
     font-family: Arial, sans-serif;
-    display: flex;
     background: #0f0f0f;
     color: white;
-    height: 100vh;
-    overflow: hidden;
 }
 
 /* Disable copy/select */
@@ -21,6 +22,14 @@ body {
     user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
+    box-sizing: border-box;
+}
+
+/* LAYOUT */
+body {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
 }
 
 /* SIDEBAR */
@@ -49,12 +58,14 @@ body {
     text-align: left;
     cursor: pointer;
     font-weight: bold;
-    transition: 0.2s;
     border-bottom: 1px solid #2a2a2a;
+    transition: 0.25s ease;
 }
 
 .sidebar button:hover {
-    background: #2b2b2b;
+    background: #2f2f2f;
+    padding-left: 22px;
+    color: #f5c542;
 }
 
 .sidebar button.active {
@@ -62,22 +73,20 @@ body {
     color: #f5c542;
 }
 
-/* CONTENT FULL SCREEN FIX */
+/* CONTENT */
 .content {
     flex: 1;
     height: 100vh;
     overflow-y: auto;
-    padding: 0;
 }
 
-/* PAGE TAKES FULL SPACE */
+/* PAGE */
 .page {
     display: none;
     background: #1a1a1a;
     width: 100%;
     min-height: 100vh;
     padding: 25px;
-    box-sizing: border-box;
 }
 
 .page.active {
@@ -185,14 +194,15 @@ th {
     <h2>Infractions System</h2>
 
     <p>3 Warnings = 1 Strike</p>
-    <p>2 Strikes = Demotion/Suspension</p>
+    <p>2 Strikes = Demotion</p>
     <p>3 Strikes = Termination</p>
 
     <h3>Warning Types</h3>
-    <p><b>Notice</b> - Small correction</p>
+
+    <p><b>Notice</b> - Minor reminder</p>
     <p><b>Warning</b> - Logged issue</p>
     <p><b>Strike</b> - Serious offence</p>
-    <p><b>Demotion</b> - Rank removal</p>
+    <p><b>Demotion</b> - Rank loss</p>
     <p><b>Suspension</b> - Temporary removal</p>
     <p><b>Termination</b> - Permanent removal</p>
     <p><b>Blacklist</b> - Permanent staff ban</p>
@@ -207,8 +217,10 @@ th {
             <th>Rank</th>
             <th>Min Hours</th>
             <th>Promo Hours</th>
-            <th>Tickets</th>
+            <th>Ticket Min</th>
+            <th>Ticket Promo</th>
             <th>Training</th>
+            <th>Cooldown</th>
             <th>Max Monthly</th>
         </tr>
 
@@ -218,6 +230,8 @@ th {
             <td>6</td>
             <td>0</td>
             <td>0</td>
+            <td>0</td>
+            <td>N/A</td>
             <td>5</td>
         </tr>
 
@@ -225,8 +239,10 @@ th {
             <td>Administrator</td>
             <td>3</td>
             <td>5</td>
-            <td>2-4</td>
             <td>2</td>
+            <td>4</td>
+            <td>2</td>
+            <td>N/A</td>
             <td>4</td>
         </tr>
 
@@ -234,8 +250,10 @@ th {
             <td>Internal Affairs</td>
             <td>2</td>
             <td>4</td>
-            <td>8-14</td>
+            <td>8</td>
+            <td>14</td>
             <td>0</td>
+            <td>N/A</td>
             <td>2</td>
         </tr>
 
@@ -243,8 +261,10 @@ th {
             <td>Management</td>
             <td>2</td>
             <td>3</td>
-            <td>6-10</td>
+            <td>6</td>
+            <td>10</td>
             <td>0</td>
+            <td>N/A</td>
             <td>1</td>
         </tr>
 
@@ -252,8 +272,10 @@ th {
             <td>Directive</td>
             <td>1</td>
             <td>2</td>
-            <td>7-14</td>
+            <td>7</td>
+            <td>14</td>
             <td>0</td>
+            <td>N/A</td>
             <td>1</td>
         </tr>
 
@@ -263,6 +285,8 @@ th {
             <td>0</td>
             <td>0</td>
             <td>0</td>
+            <td>0</td>
+            <td>N/A</td>
             <td>0</td>
         </tr>
     </table>
