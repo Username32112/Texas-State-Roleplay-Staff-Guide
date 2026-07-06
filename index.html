@@ -10,18 +10,14 @@ html, body {
     margin: 0;
     padding: 0;
     height: 100%;
-    width: 100%;
-    overflow: hidden;
     font-family: Arial, sans-serif;
     background: #0f0f0f;
     color: white;
 }
 
-/* Disable copy/select */
+/* prevent copy */
 * {
     user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
     box-sizing: border-box;
 }
 
@@ -29,14 +25,12 @@ html, body {
 body {
     display: flex;
     height: 100vh;
-    width: 100vw;
 }
 
 /* SIDEBAR */
 .sidebar {
     width: 220px;
     background: #1e1e1e;
-    height: 100vh;
     border-right: 2px solid #333;
     display: flex;
     flex-direction: column;
@@ -45,9 +39,8 @@ body {
 .sidebar h2 {
     padding: 15px;
     margin: 0;
-    font-size: 16px;
-    border-bottom: 1px solid #333;
     color: #f5c542;
+    border-bottom: 1px solid #333;
 }
 
 .sidebar button {
@@ -58,13 +51,12 @@ body {
     text-align: left;
     cursor: pointer;
     font-weight: bold;
-    border-bottom: 1px solid #2a2a2a;
-    transition: 0.25s ease;
+    transition: 0.2s;
 }
 
 .sidebar button:hover {
     background: #2f2f2f;
-    padding-left: 22px;
+    padding-left: 20px;
     color: #f5c542;
 }
 
@@ -76,7 +68,6 @@ body {
 /* CONTENT */
 .content {
     flex: 1;
-    height: 100vh;
     overflow-y: auto;
 }
 
@@ -84,52 +75,83 @@ body {
 .page {
     display: none;
     background: #1a1a1a;
-    width: 100%;
     min-height: 100vh;
-    padding: 25px;
+    padding: 20px;
 }
 
 .page.active {
     display: block;
 }
 
-/* HEADINGS */
-h1 {
-    color: #f5c542;
-}
-
-/* WARNING BOX */
-.warning-box {
-    background: #2a1a1a;
-    padding: 15px;
-    border-left: 5px solid red;
-    margin-top: 15px;
-}
-
-/* TABLE */
+/* TABLE MOBILE FIX */
 table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 15px;
     font-size: 14px;
+    overflow-x: auto;
+    display: block;
 }
 
 th, td {
     border: 1px solid #333;
     padding: 10px;
     text-align: center;
+    min-width: 120px;
 }
 
 th {
     background: #2a2a2a;
     color: #f5c542;
 }
+
+/* WARNING */
+.warning-box {
+    background: #2a1a1a;
+    border-left: 5px solid red;
+    padding: 15px;
+    margin-top: 15px;
+}
+
+/* MOBILE MENU BUTTON */
+.menu-btn {
+    display: none;
+    padding: 15px;
+    background: #1e1e1e;
+    color: #f5c542;
+    border-bottom: 1px solid #333;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+
+    body {
+        flex-direction: column;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .sidebar {
+        width: 100%;
+        display: none;
+    }
+
+    .sidebar.active {
+        display: flex;
+    }
+}
 </style>
 </head>
 
 <body>
 
-<div class="sidebar">
+<div class="menu-btn" onclick="toggleMenu()">☰ Staff Menu</div>
+
+<div class="sidebar" id="sidebar">
     <h2>Staff Guide</h2>
     <button class="active" onclick="openPage(0)">Introduction</button>
     <button onclick="openPage(1)">Information</button>
@@ -139,76 +161,28 @@ th {
 
 <div class="content">
 
-<!-- PAGE 1 -->
 <div class="page active">
     <h1>Texas State Roleplay Staff Guide</h1>
-
-    <h2>Introduction</h2>
-    <p>
-        Welcome to the Texas State Roleplay Staff Guide.<br><br>
-
-        This guide explains expectations for staff and how things run day-to-day.<br><br>
-
-        Staff are responsible for keeping the server fair, organised, and enjoyable.<br><br>
-
-        Your actions represent the server, so professionalism is required at all times.<br><br>
-
-        If you need help, open a Board of Directives ticket in communications.<br><br>
-
-        This guide may be updated at any time.
-    </p>
+    <p>Welcome to the staff guide. This is used for all staff information and rules.</p>
 
     <div class="warning-box">
-        <h3>WARNING</h3>
-        Do not leak or share any staff-only information.<br><br>
-        Violations may result in removal or staff blacklist.
+        WARNING: Do not leak staff information.
     </div>
 </div>
 
-<!-- PAGE 2 -->
 <div class="page">
     <h2>Information</h2>
-
-    <h3>Higher Rank Decisions</h3>
-    <p>All High Rank decisions are final. Use Internal Affairs for appeals.</p>
-
-    <h3>Commitment</h3>
-    <p>
-        4 hours weekly required.<br>
-        8 hours for promotion track staff.
-    </p>
-
-    <h3>Discord Nickname</h3>
-    <p>[RANK] ┃ Username</p>
-
-    <h3>Shift Rules</h3>
-    <p>
-        Minimum 15 minutes per shift.<br>
-        Must have 15+ players unless stated otherwise.<br>
-        Must remain active during shifts.
-    </p>
+    <p>High ranks are final. Use IA for issues.</p>
+    <p>4 hours weekly required.</p>
 </div>
 
-<!-- PAGE 3 -->
 <div class="page">
-    <h2>Infractions System</h2>
-
-    <p>3 Warnings = 1 Strike</p>
-    <p>2 Strikes = Demotion</p>
-    <p>3 Strikes = Termination</p>
-
-    <h3>Warning Types</h3>
-
-    <p><b>Notice</b> - Minor reminder</p>
-    <p><b>Warning</b> - Logged issue</p>
-    <p><b>Strike</b> - Serious offence</p>
-    <p><b>Demotion</b> - Rank loss</p>
-    <p><b>Suspension</b> - Temporary removal</p>
-    <p><b>Termination</b> - Permanent removal</p>
-    <p><b>Blacklist</b> - Permanent staff ban</p>
+    <h2>Infractions</h2>
+    <p>3 warnings = strike</p>
+    <p>2 strikes = demotion</p>
+    <p>3 strikes = termination</p>
 </div>
 
-<!-- PAGE 4 -->
 <div class="page">
     <h2>Promotions</h2>
 
@@ -217,10 +191,8 @@ th {
             <th>Rank</th>
             <th>Min Hours</th>
             <th>Promo Hours</th>
-            <th>Ticket Min</th>
-            <th>Ticket Promo</th>
+            <th>Tickets</th>
             <th>Training</th>
-            <th>Cooldown</th>
             <th>Max Monthly</th>
         </tr>
 
@@ -230,8 +202,6 @@ th {
             <td>6</td>
             <td>0</td>
             <td>0</td>
-            <td>0</td>
-            <td>N/A</td>
             <td>5</td>
         </tr>
 
@@ -240,54 +210,8 @@ th {
             <td>3</td>
             <td>5</td>
             <td>2</td>
-            <td>4</td>
-            <td>2</td>
-            <td>N/A</td>
-            <td>4</td>
-        </tr>
-
-        <tr>
-            <td>Internal Affairs</td>
             <td>2</td>
             <td>4</td>
-            <td>8</td>
-            <td>14</td>
-            <td>0</td>
-            <td>N/A</td>
-            <td>2</td>
-        </tr>
-
-        <tr>
-            <td>Management</td>
-            <td>2</td>
-            <td>3</td>
-            <td>6</td>
-            <td>10</td>
-            <td>0</td>
-            <td>N/A</td>
-            <td>1</td>
-        </tr>
-
-        <tr>
-            <td>Directive</td>
-            <td>1</td>
-            <td>2</td>
-            <td>7</td>
-            <td>14</td>
-            <td>0</td>
-            <td>N/A</td>
-            <td>1</td>
-        </tr>
-
-        <tr>
-            <td>Ownership</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>N/A</td>
-            <td>0</td>
         </tr>
     </table>
 </div>
@@ -304,6 +228,13 @@ function openPage(index) {
 
     pages[index].classList.add("active");
     buttons[index].classList.add("active");
+
+    // close mobile menu after click
+    document.getElementById("sidebar").classList.remove("active");
+}
+
+function toggleMenu() {
+    document.getElementById("sidebar").classList.toggle("active");
 }
 </script>
 
