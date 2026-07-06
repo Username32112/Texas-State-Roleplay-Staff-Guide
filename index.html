@@ -10,10 +10,10 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     display: flex;
-
-    /* BACK TO BLACK */
     background: #0f0f0f;
     color: white;
+    height: 100vh;
+    overflow: hidden;
 }
 
 /* Disable copy/select */
@@ -62,21 +62,22 @@ body {
     color: #f5c542;
 }
 
-/* CONTENT */
+/* CONTENT FULL SCREEN FIX */
 .content {
     flex: 1;
-    padding: 20px;
+    height: 100vh;
     overflow-y: auto;
+    padding: 0;
 }
 
-/* PAGE BOX */
+/* PAGE TAKES FULL SPACE */
 .page {
     display: none;
     background: #1a1a1a;
-    padding: 20px;
-    border-radius: 10px;
-    border: 1px solid #333;
-    max-width: 1000px;
+    width: 100%;
+    min-height: 100vh;
+    padding: 25px;
+    box-sizing: border-box;
 }
 
 .page.active {
@@ -84,10 +85,6 @@ body {
 }
 
 /* HEADINGS */
-h1, h2, h3 {
-    margin-top: 0;
-}
-
 h1 {
     color: #f5c542;
 }
@@ -164,14 +161,12 @@ th {
     <h2>Information</h2>
 
     <h3>Higher Rank Decisions</h3>
-    <p>
-        All High Rank decisions are final. If you disagree, use Internal Affairs instead of arguing.
-    </p>
+    <p>All High Rank decisions are final. Use Internal Affairs for appeals.</p>
 
     <h3>Commitment</h3>
     <p>
         4 hours weekly required.<br>
-        8 hours required for promotion track staff.
+        8 hours for promotion track staff.
     </p>
 
     <h3>Discord Nickname</h3>
@@ -179,14 +174,9 @@ th {
 
     <h3>Shift Rules</h3>
     <p>
-        Minimum shift: 15 minutes.<br>
+        Minimum 15 minutes per shift.<br>
         Must have 15+ players unless stated otherwise.<br>
-        Must stay active during shifts.
-    </p>
-
-    <h3>Moderation Behaviour</h3>
-    <p>
-        Staff must remain professional, calm, and fair in all situations.
+        Must remain active during shifts.
     </p>
 </div>
 
@@ -199,19 +189,18 @@ th {
     <p>3 Strikes = Termination</p>
 
     <h3>Warning Types</h3>
-
-    <p><b>Notice</b> - Small correction, no punishment</p>
-    <p><b>Warning</b> - Logged mistake</p>
+    <p><b>Notice</b> - Small correction</p>
+    <p><b>Warning</b> - Logged issue</p>
     <p><b>Strike</b> - Serious offence</p>
-    <p><b>Demotion</b> - Rank removal or downgrade</p>
-    <p><b>Suspension</b> - Temporary staff removal</p>
+    <p><b>Demotion</b> - Rank removal</p>
+    <p><b>Suspension</b> - Temporary removal</p>
     <p><b>Termination</b> - Permanent removal</p>
     <p><b>Blacklist</b> - Permanent staff ban</p>
 </div>
 
 <!-- PAGE 4 -->
 <div class="page">
-    <h2>Promotions Table</h2>
+    <h2>Promotions</h2>
 
     <table>
         <tr>
