@@ -1,242 +1,3633 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Texas State Roleplay Staff Guide</title>
 
+
 <style>
+
+
 html, body {
+
     margin: 0;
     padding: 0;
     height: 100%;
     font-family: Arial, sans-serif;
     background: #0f0f0f;
     color: white;
+
 }
 
-/* prevent copy */
+
+
 * {
-    user-select: none;
+
     box-sizing: border-box;
+    user-select: none;
+
 }
+
+
 
 /* LAYOUT */
+
 body {
+
     display: flex;
     height: 100vh;
+
 }
 
+
+
+
 /* SIDEBAR */
+
 .sidebar {
-    width: 220px;
-    background: #1e1e1e;
+
+    width: 240px;
+    background: #181818;
     border-right: 2px solid #333;
     display: flex;
     flex-direction: column;
+    transition: .3s;
+
 }
+
+
 
 .sidebar h2 {
-    padding: 15px;
+
     margin: 0;
+    padding: 20px;
+    text-align: center;
     color: #f5c542;
     border-bottom: 1px solid #333;
+
 }
 
+
+
+
 .sidebar button {
-    padding: 14px;
-    background: none;
+
+    padding: 15px;
+    background: transparent;
     border: none;
     color: white;
     text-align: left;
     cursor: pointer;
     font-weight: bold;
-    transition: 0.2s;
+    transition: .25s;
+
 }
+
+
 
 .sidebar button:hover {
-    background: #2f2f2f;
-    padding-left: 20px;
+
+    background: #262626;
     color: #f5c542;
+    padding-left: 25px;
+
 }
+
+
 
 .sidebar button.active {
-    background: #3a3a3a;
+
+    background: #303030;
     color: #f5c542;
+    border-left: 4px solid #f5c542;
+
 }
+
+
+
+
+
 
 /* CONTENT */
+
+
 .content {
+
     flex: 1;
     overflow-y: auto;
+
 }
 
-/* PAGE */
+
+
+
+
+/* PAGE SYSTEM */
+
+
 .page {
+
     display: none;
-    background: #1a1a1a;
     min-height: 100vh;
-    padding: 20px;
+    padding: 25px;
+    background: #1b1b1b;
+
 }
+
+
 
 .page.active {
+
     display: block;
+    animation: pageFade .35s ease;
+
 }
 
-/* TABLE MOBILE FIX */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
-    font-size: 14px;
-    overflow-x: auto;
-    display: block;
+
+
+@keyframes pageFade {
+
+    from {
+
+        opacity:0;
+        transform:translateY(15px);
+
+    }
+
+
+    to {
+
+        opacity:1;
+        transform:translateY(0);
+
+    }
+
 }
 
-th, td {
-    border: 1px solid #333;
-    padding: 10px;
-    text-align: center;
-    min-width: 120px;
+
+
+
+
+
+
+/* CARDS */
+
+
+.card {
+
+    background:#242424;
+    border:1px solid #333;
+    border-radius:10px;
+    padding:20px;
+    margin-bottom:20px;
+
 }
 
-th {
-    background: #2a2a2a;
-    color: #f5c542;
+
+
+.card h2 {
+
+    color:#f5c542;
+
 }
+
+
+
+
 
 /* WARNING */
+
+
 .warning-box {
-    background: #2a1a1a;
-    border-left: 5px solid red;
-    padding: 15px;
-    margin-top: 15px;
+
+    border-left:5px solid red;
+    background:#2b1b1b;
+    padding:15px;
+
 }
 
-/* MOBILE MENU BUTTON */
+
+
+
+
+
+
+/* TABLES */
+
+
+table {
+
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+
+}
+
+
+
+th {
+
+    background:#292929;
+    color:#f5c542;
+    padding:12px;
+    border:1px solid #444;
+
+}
+
+
+
+td {
+
+    background:#202020;
+    padding:12px;
+    text-align:center;
+    border:1px solid #333;
+
+}
+
+
+
+
+
+
+
+/* SEARCH */
+
+
+.search-box {
+
+    width:100%;
+    padding:12px;
+    background:#111;
+    color:white;
+    border:1px solid #f5c542;
+    border-radius:8px;
+    margin-bottom:15px;
+
+}
+
+
+
+
+
+
+
+/* MOBILE MENU */
+
+
 .menu-btn {
-    display: none;
-    padding: 15px;
-    background: #1e1e1e;
-    color: #f5c542;
-    border-bottom: 1px solid #333;
-    cursor: pointer;
-    font-weight: bold;
+
+    display:none;
+    padding:15px;
+    background:#181818;
+    color:#f5c542;
+    font-weight:bold;
+    cursor:pointer;
+    border-bottom:1px solid #333;
+
 }
 
-/* RESPONSIVE */
-@media (max-width: 768px) {
 
-    body {
-        flex-direction: column;
-    }
 
-    .menu-btn {
-        display: block;
-    }
 
-    .sidebar {
-        width: 100%;
-        display: none;
-    }
 
-    .sidebar.active {
-        display: flex;
-    }
+
+@media(max-width:768px){
+
+
+body {
+
+    flex-direction:column;
+
 }
+
+
+
+.menu-btn {
+
+    display:block;
+
+}
+
+
+
+.sidebar {
+
+    width:100%;
+    display:none;
+
+}
+
+
+
+.sidebar.active {
+
+    display:flex;
+
+}
+
+
+}
+
+
+
 </style>
+
+
 </head>
+
+
 
 <body>
 
-<div class="menu-btn" onclick="toggleMenu()">☰ Menu</div>
+
+
+<div class="menu-btn" onclick="toggleMenu()">
+
+☰ Menu
+
+</div>
+
+
+
+
 
 <div class="sidebar" id="sidebar">
-    <h2>Staff Guide</h2>
-    <button class="active" onclick="openPage(0)">Introduction</button>
-    <button onclick="openPage(1)">Information</button>
-    <button onclick="openPage(2)">Infractions</button>
-    <button onclick="openPage(3)">Promotions</button>
+
+
+<h2>
+Texas State Roleplay
+</h2>
+
+
+
+<button class="active" onclick="openPage(0)">
+Introduction
+</button>
+
+
+<button onclick="openPage(1)">
+Staff Information
+</button>
+
+
+<button onclick="openPage(2)">
+Requirements
+</button>
+
+
+<button onclick="openPage(3)">
+Commands & Permissions
+</button>
+
+
+<button onclick="openPage(4)">
+Discipline
+</button>
+
+
+<button onclick="openPage(5)">
+Promotions
+</button>
+
+
+<button onclick="openPage(6)">
+Punishments
+</button>
+
+
+
 </div>
+
+
+
+
 
 <div class="content">
 
+
+
+<!-- PART 2 STARTS BELOW THIS LINE -->
+
+
+
 <div class="page active">
-    <h1>Texas State Roleplay Staff Guide</h1>
-    <p>Welcome to the staff guide. This is used for all staff information and rules.</p>
 
-    <div class="warning-box">
-        WARNING: Do not leak staff information.
-    </div>
+
+<h1>
+Staff Guide
+</h1>
+
+
+<div class="card">
+
+<h2>
+Welcome
+</h2>
+
+
+<p>
+Welcome to the Texas State Roleplay Staff Guide.
+</p>
+
+
+<p>
+This guide explains staff expectations, responsibilities, procedures, and rules.
+</p>
+
+
 </div>
+
+
+</div>
+<!-- STAFF INFORMATION PAGE -->
+
 
 <div class="page">
-    <h2>Information</h2>
-    <p>High ranks are final. Use IA for issues.</p>
-    <p>4 hours weekly required.</p>
+
+
+<h1>
+Staff Information
+</h1>
+
+
+
+
+<div class="card">
+
+
+<h2>
+Higher Rank Decisions
+</h2>
+
+
+<p>
+All decisions made by the High Ranking Team are final and must be respected.
+</p>
+
+
+<p>
+If you believe a decision is incorrect or unfair, submit an Internal Affairs ticket for review.
+</p>
+
+
+<table>
+
+
+<tr>
+
+<th>
+Allowed
+</th>
+
+<th>
+Not Allowed
+</th>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Create an Internal Affairs ticket
+</td>
+
+<td>
+Argue publicly
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Explain concerns professionally
+</td>
+
+<td>
+Disrespect High Rank decisions
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Wait for a proper review
+</td>
+
+<td>
+Create staff drama
+</td>
+
+</tr>
+
+
+</table>
+
+
 </div>
+
+
+
+
+
+
+<div class="card">
+
+
+<h2>
+Staff Commitment
+</h2>
+
+
+<p>
+All staff members are expected to remain active and complete required shift time.
+</p>
+
+
+
+<table>
+
+
+<tr>
+
+<th>
+Requirement
+</th>
+
+<th>
+Amount
+</th>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Weekly Shift Requirement
+</td>
+
+<td>
+4 Hours
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Promotion Consideration
+</td>
+
+<td>
+8 Hours Weekly
+</td>
+
+</tr>
+
+
+
+</table>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="card">
+
+
+<h2>
+Discord Nickname
+</h2>
+
+
+<p>
+All staff members must display their rank in their Discord nickname.
+</p>
+
+
+<p>
+Format:
+</p>
+
+
+<p>
+<b>
+[RANK] ┃ [Username]
+</b>
+</p>
+
+
+<p>
+Example:
+</p>
+
+
+<p>
+<b>
+TM ┃ Yuyu565660
+</b>
+</p>
+
+
+<p>
+If you cannot change your nickname, make an Internal Affairs ticket.
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="card">
+
+
+<h2>
+Custom Messages
+</h2>
+
+
+<p>
+Only approved staff ranks may use custom messages such as :h commands or similar tools.
+</p>
+
+
+
+<table>
+
+
+<tr>
+
+<th>
+Rank
+</th>
+
+<th>
+Permission
+</th>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Lead Moderator+
+</td>
+
+<td>
+Allowed
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Below Lead Moderator
+</td>
+
+<td>
+Permission Required
+</td>
+
+</tr>
+
+
+
+</table>
+
+
+</div>
+
+
+
+</div>
+
+
+
+<!-- NEXT PART CONTINUES BELOW -->
+<!-- REQUIREMENTS PAGE -->
+
 
 <div class="page">
-    <h2>Infractions</h2>
-    <p>3 warnings = strike</p>
-    <p>2 strikes = demotion</p>
-    <p>3 strikes = termination</p>
+
+
+<h1>
+Requirements
+</h1>
+
+
+
+
+
+
+<div class="card">
+
+
+<h2>
+Active Engagement
+</h2>
+
+
+<p>
+During your shift, you are expected to actively monitor and moderate the server.
+</p>
+
+
+<p>
+Standing still or doing nothing during your shift is not allowed unless you have properly selected On Break in Melonly.
+</p>
+
+
+
+<table>
+
+
+<tr>
+
+<th>
+Activity
+</th>
+
+<th>
+Expectation
+</th>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Discord Checks
+</td>
+
+<td>
+Make sure everyone in the server is in the discord server.
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Livery Checks
+</td>
+
+<td>
+Ensure all departments have the right livery.
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Vehicle Checks
+</td>
+
+<td>
+Make sure everyone is driving vehicles that they are allowed to drive.
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Mod Calls
+</td>
+
+<td>
+Respond to situations when needed.
+</td>
+
+</tr>
+
+
+
+</table>
+
+
 </div>
+
+
+
+
+
+
+
+
+<div class="card">
+
+
+<h2>
+Shift Requirements
+</h2>
+
+
+
+<table>
+
+
+<tr>
+
+<th>
+Requirement
+</th>
+
+<th>
+Rule
+</th>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Minimum Shift Length
+</td>
+
+<td>
+15 Minutes
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Minimum Players Online
+</td>
+
+<td>
+15 Players
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Breaks
+</td>
+
+<td>
+Must use Melonly On Break
+</td>
+
+</tr>
+
+
+
+</table>
+
+
+
+<p>
+Shift time must always be earned through active moderation and presence.
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="card">
+
+
+<h2>
+Kick Procedure
+</h2>
+
+
+<p>
+Before kicking a player, staff must:
+</p>
+
+
+
+<ul>
+
+<li>Inform the player they are being kicked.</li>
+
+<li>Explain the reason clearly.</li>
+
+<li>Remain professional.</li>
+
+<li>Ensure they understand the cooldown.</li>
+
+</ul>
+
+
+
+
+<h3>
+Approved Kick Message
+</h3>
+
+
+
+<pre>
+
+:pm [User] You are being kicked for 30 minutes for [Reason]. Do not rejoin during this time or you will be banned.
+
+</pre>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="card">
+
+
+<h2>
+Ban Procedure
+</h2>
+
+
+<p>
+Before banning a player, staff must:
+</p>
+
+
+
+<ul>
+
+<li>Explain the reason for the ban.</li>
+
+<li>Provide appeal information.</li>
+
+<li>Log the punishment correctly.</li>
+
+</ul>
+
+
+
+
+<h3>
+Approved Ban Message
+</h3>
+
+
+
+<pre>
+
+:pm [User] You are being banned from Texas State Roleplay for [Reason]. If you wish to appeal this punishment, please submit an appeal through our communication server.
+
+Appeal Code: TEXASR
+
+</pre>
+
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+<!-- NEXT PART CONTINUES BELOW -->
+ <!-- COMMANDS & PERMISSIONS PAGE -->
+
 
 <div class="page">
-    <h2>Promotions</h2>
 
-    <table>
-        <tr>
-            <th>Rank</th>
-            <th>Min Hours</th>
-            <th>Promo Hours</th>
-            <th>Tickets</th>
-            <th>Training</th>
-            <th>Max Monthly</th>
-        </tr>
 
-        <tr>
-            <td>Moderator</td>
-            <td>3</td>
-            <td>6</td>
-            <td>0</td>
-            <td>0</td>
-            <td>5</td>
-        </tr>
+<h1>
+Commands & Permissions
+</h1>
 
-        <tr>
-            <td>Administrator</td>
-            <td>3</td>
-            <td>5</td>
-            <td>2</td>
-            <td>2</td>
-            <td>4</td>
-        </tr>
-    </table>
+
+
+
+
+
+<div class="card">
+
+
+<h2>
+Command Usage
+</h2>
+
+
+<p>
+Staff members must use commands responsibly and only for moderation purposes.
+</p>
+
+
+<p>
+Commands must never be used for fun, personal benefit, or to interfere with roleplay.
+</p>
+
+
+
+
+<table>
+
+
+<tr>
+
+<th>
+Allowed
+</th>
+
+<th>
+Not Allowed
+</th>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Using commands during moderation situations
+</td>
+
+<td>
+Using commands for entertainment
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Helping players when necessary
+</td>
+
+<td>
+Using commands to benefit yourself
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Following rank permissions
+</td>
+
+<td>
+Using restricted commands without permission
+</td>
+
+</tr>
+
+
+
+</table>
+
+
 </div>
 
+
+
+
+
+
+
+
+<div class="card">
+
+
+<h2>
+Command Formatting
+</h2>
+
+
+<p>
+Staff should not use short commands.
+</p>
+
+
+
+<table>
+
+
+<tr>
+
+<th>
+Example
+</th>
+
+<th>
+Reason
+</th>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+:to yuyu
+</td>
+
+<td>
+So you don't teleport to someone else.
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+:to yuy
+</td>
+
+<td>
+You 
+</td>
+
+</tr>
+You have a higher chance of teleporting to someone else and you will also be infracted for it.
+
+
+</table>
+
+
 </div>
+
+
+
+
+
+
+
+
+<div class="card">
+
+
+<h2>
+Staff Permissions
+</h2>
+
+
+<p>
+Staff permissions are based on rank, responsibility, and trust.
+</p>
+
+
+
+
+<table>
+
+
+<tr>
+
+<th>
+Rule
+</th>
+
+<th>
+Requirement
+</th>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Only use assigned permissions
+</td>
+
+<td>
+Required
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Use moderation tools correctly
+</td>
+
+<td>
+Required
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Abuse staff commands
+</td>
+
+<td>
+Not Allowed
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Punish without a valid reason
+</td>
+
+<td>
+Not Allowed
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Give advantages using staff powers
+</td>
+
+<td>
+Not Allowed
+</td>
+
+</tr>
+
+
+
+</table>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="card">
+
+
+<h2>
+Permission Abuse Consequences
+</h2>
+
+
+
+<table>
+
+
+<tr>
+
+<th>
+Severity
+</th>
+
+<th>
+Possible Result
+</th>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Minor Abuse
+</td>
+
+<td>
+Warning / Strike
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Repeated Abuse
+</td>
+
+<td>
+Suspension / Demotion
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Major Abuse
+</td>
+
+<td>
+Staff Removal / Staff Blacklist
+</td>
+
+</tr>
+
+
+
+</table>
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+<!-- NEXT PART CONTINUES BELOW -->
+ <!-- DISCIPLINE PAGE -->
+
+
+<div class="page">
+
+
+<h1>
+Discipline System
+</h1>
+
+
+
+
+
+
+
+<div class="card">
+
+
+<h2>
+Staff Infractions & Discipline Policy
+</h2>
+
+
+<p>
+Staff infractions are used to maintain accountability, professionalism, and proper staff standards.
+</p>
+
+
+<p>
+They help track behavior, correct mistakes, and ensure staff members follow expectations.
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="card">
+
+
+<h2>
+Escalation System
+</h2>
+
+
+
+<table>
+
+
+<tr>
+
+<th>
+Infraction Level
+</th>
+
+<th>
+Result
+</th>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+3 Warnings
+</td>
+
+<td>
+1 Strike
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+2 Strikes
+</td>
+
+<td>
+Demotion or Suspension
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+3 Strikes
+</td>
+
+<td>
+Termination
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Trial Moderator
+</td>
+
+<td>
+3 Warnings / 1 Strike may result in termination
+</td>
+
+</tr>
+
+
+
+</table>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="card">
+
+
+<h2>
+Notice
+</h2>
+
+
+<p>
+A Notice is a reminder given for minor mistakes that require improvement.
+</p>
+
+
+
+<table>
+
+
+<tr>
+
+<th>
+Examples
+</th>
+
+<th>
+Result
+</th>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Small moderation mistakes
+</td>
+
+<td>
+Reminder to improve
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Forgetting staff duties
+</td>
+
+<td>
+Guidance
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Low shift activity
+</td>
+
+<td>
+Staff feedback
+</td>
+
+</tr>
+
+
+
+</table>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="card">
+
+
+<h2>
+Warning
+</h2>
+
+
+<p>
+A Warning is the first official punishment and is logged on a staff record.
+</p>
+
+
+
+<table>
+
+
+<tr>
+
+<th>
+Examples
+</th>
+
+<th>
+Result
+</th>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Repeated mistakes
+</td>
+
+<td>
+Logged Warning
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Unprofessional behavior
+</td>
+
+<td>
+Logged Warning
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Minor misuse of staff tools
+</td>
+
+<td>
+Logged Warning
+</td>
+
+</tr>
+
+
+
+</table>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="card">
+
+
+<h2>
+Strike
+</h2>
+
+
+<p>
+A Strike is a serious punishment requiring immediate improvement.
+</p>
+
+
+
+<table>
+
+
+<tr>
+
+<th>
+Examples
+</th>
+
+<th>
+Result
+</th>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Command abuse
+</td>
+
+<td>
+Strike Added
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Ignoring responsibilities
+</td>
+
+<td>
+Strike Added
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Disrespecting others
+</td>
+
+<td>
+Strike Added
+</td>
+
+</tr>
+
+
+
+</table>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="card">
+
+
+<h2>
+Demotion
+</h2>
+
+
+<p>
+A Demotion removes a staff member from their current rank due to ongoing issues or lack of improvement.
+</p>
+
+
+
+<table>
+
+
+<tr>
+
+<th>
+Possible Result
+</th>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Moved down a rank
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+May need to re-earn rank
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Possible probation period
+</td>
+
+</tr>
+
+
+
+</table>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="card">
+
+
+<h2>
+Suspension
+</h2>
+
+
+<p>
+A Suspension temporarily removes staff duties and permissions.
+</p>
+
+
+
+<table>
+
+
+<tr>
+
+<th>
+Examples
+</th>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Serious misconduct
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Staff abuse
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Toxic behavior
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Ongoing investigation
+</td>
+
+</tr>
+
+
+
+</table>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="card">
+
+
+<h2>
+Termination
+</h2>
+
+
+<p>
+Termination permanently removes a staff member from the staff team.
+</p>
+
+
+
+<table>
+
+
+<tr>
+
+<th>
+Examples
+</th>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Repeated major offenses
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Major staff abuse
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Harming the community
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Ignoring previous punishments
+</td>
+
+</tr>
+
+
+
+</table>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="card">
+
+
+<h2>
+Staff Blacklist
+</h2>
+
+
+<p>
+The Staff Blacklist is the highest punishment and prevents someone from returning to staff.
+</p>
+
+
+
+<table>
+
+
+<tr>
+
+<th>
+Examples
+</th>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Severe abuse of power
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Leaking staff information
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Major trust violations
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Serious harassment
+</td>
+
+</tr>
+
+
+
+</table>
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+<!-- NEXT PART CONTINUES BELOW -->
+ <!-- PROMOTIONS PAGE -->
+
+
+<div class="page">
+
+
+<h1>
+Promotions
+</h1>
+
+
+
+
+
+
+
+<div class="card">
+
+
+<h2>
+Promotion Requirements
+</h2>
+
+
+<p>
+Promotions are based on activity, performance, tickets completed, training participation, and overall contribution to the staff team.
+</p>
+
+
+
+
+
+<table>
+
+
+<tr>
+
+<th>
+Rank
+</th>
+
+<th>
+Minimum Hours
+</th>
+
+<th>
+Promotion Hours
+</th>
+
+<th>
+Ticket Minimum
+</th>
+
+<th>
+Ticket Promotion
+</th>
+
+<th>
+Trainings Done
+</th>
+
+<th>
+Cooldown
+</th>
+
+<th>
+Maximum Monthly
+</th>
+
+</tr>
+
+
+
+
+
+<tr>
+
+<td>
+Moderator
+</td>
+
+<td>
+3 Hours
+</td>
+
+<td>
+6 Hours
+</td>
+
+<td>
+0 Tickets
+</td>
+
+<td>
+0 Tickets
+</td>
+
+<td>
+0
+</td>
+
+<td>
+N/A
+</td>
+
+<td>
+5 Promotions
+</td>
+
+</tr>
+
+
+
+
+
+<tr>
+
+<td>
+Administrator
+</td>
+
+<td>
+3 Hours
+</td>
+
+<td>
+5 Hours
+</td>
+
+<td>
+2 Tickets
+</td>
+
+<td>
+4 Tickets
+</td>
+
+<td>
+2 Trainings
+</td>
+
+<td>
+N/A
+</td>
+
+<td>
+4 Promotions
+</td>
+
+</tr>
+
+
+
+
+
+<tr>
+
+<td>
+Internal Affairs
+</td>
+
+<td>
+2 Hours
+</td>
+
+<td>
+4 Hours
+</td>
+
+<td>
+8 Tickets
+</td>
+
+<td>
+14 Tickets
+</td>
+
+<td>
+0
+</td>
+
+<td>
+N/A
+</td>
+
+<td>
+2 Promotions
+</td>
+
+</tr>
+
+
+
+
+
+<tr>
+
+<td>
+Management
+</td>
+
+<td>
+2 Hours
+</td>
+
+<td>
+3 Hours
+</td>
+
+<td>
+6 Tickets
+</td>
+
+<td>
+10 Tickets
+</td>
+
+<td>
+0
+</td>
+
+<td>
+N/A
+</td>
+
+<td>
+1 Promotion
+</td>
+
+</tr>
+
+
+
+
+
+<tr>
+
+<td>
+Directive
+</td>
+
+<td>
+1 Hour
+</td>
+
+<td>
+2 Hours
+</td>
+
+<td>
+7 Tickets
+</td>
+
+<td>
+14 Tickets
+</td>
+
+<td>
+0
+</td>
+
+<td>
+N/A
+</td>
+
+<td>
+1 Promotion
+</td>
+
+</tr>
+
+
+
+
+
+<tr>
+
+<td>
+Ownership
+</td>
+
+<td>
+0 Hours
+</td>
+
+<td>
+0 Hours
+</td>
+
+<td>
+0 Tickets
+</td>
+
+<td>
+0 Tickets
+</td>
+
+<td>
+0
+</td>
+
+<td>
+N/A
+</td>
+
+<td>
+0 Promotions
+</td>
+
+</tr>
+
+
+
+</table>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="card">
+
+
+<h2>
+Promotion Expectations
+</h2>
+
+
+
+
+<table>
+
+
+<tr>
+
+<th>
+Category
+</th>
+
+<th>
+Expectation
+</th>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Activity
+</td>
+
+<td>
+Maintain required hours and participation.
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Performance
+</td>
+
+<td>
+Show proper moderation skills and decision making.
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Teamwork
+</td>
+
+<td>
+Support other staff members and communicate properly.
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Conduct
+</td>
+
+<td>
+Maintain professionalism and a clean staff record.
+</td>
+
+</tr>
+
+
+
+</table>
+
+
+</div>
+
+
+
+
+
+
+
+</div>
+
+
+<!-- NEXT PART CONTINUES BELOW -->
+ <!-- PUNISHMENTS PAGE -->
+
+
+<div class="page">
+
+
+<h1>
+Punishment Guide
+</h1>
+
+
+
+
+
+
+<div class="card">
+
+
+<h2>
+ERLC Punishment System
+</h2>
+
+
+<p>
+Staff members must follow this guide when handling player violations.
+</p>
+
+
+<p>
+High Rank may increase punishments depending on severity, previous history, or circumstances.
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="card">
+
+
+<input 
+class="search-box"
+id="punishmentSearch"
+placeholder="Search punishments..."
+onkeyup="searchPunishments()"
+>
+
+
+
+<table id="punishmentTable">
+
+
+<tr>
+
+<th>
+Violation
+</th>
+
+<th>
+First Offense
+</th>
+
+<th>
+Repeated Offense
+</th>
+
+<th>
+Ban Length
+</th>
+
+</tr>
+
+
+
+
+<tr>
+
+<td>
+RDM (Random Death Match)
+</td>
+
+<td>
+Warning
+</td>
+
+<td>
+Kick
+</td>
+
+<td>
+3 Months
+</td>
+
+</tr>
+
+
+
+
+
+<tr>
+
+<td>
+VDM (Vehicle Death Match)
+</td>
+
+<td>
+Warning
+</td>
+
+<td>
+Kick
+</td>
+
+<td>
+3 Months
+</td>
+
+</tr>
+
+
+
+
+
+<tr>
+
+<td>
+FRP (Fail Roleplay)
+</td>
+
+<td>
+Warning
+</td>
+
+<td>
+Kick
+</td>
+
+<td>
+1 Month
+</td>
+
+</tr>
+
+
+
+
+
+<tr>
+
+<td>
+Fear RP
+</td>
+
+<td>
+Warning
+</td>
+
+<td>
+Kick
+</td>
+
+<td>
+1 Month
+</td>
+
+</tr>
+
+
+
+
+
+<tr>
+
+<td>
+NLR (New Life Rule)
+</td>
+
+<td>
+Warning
+</td>
+
+<td>
+Kick
+</td>
+
+<td>
+1 Month
+</td>
+
+</tr>
+
+
+
+
+
+<tr>
+
+<td>
+Cuff Rushing
+</td>
+
+<td>
+Warning
+</td>
+
+<td>
+Kick
+</td>
+
+<td>
+1 Month
+</td>
+
+</tr>
+
+
+
+
+
+<tr>
+
+<td>
+Tow Rushing
+</td>
+
+<td>
+Warning
+</td>
+
+<td>
+Kick
+</td>
+
+<td>
+1 Month
+</td>
+
+</tr>
+
+
+
+
+
+<tr>
+
+<td>
+GTA-D (GTA Driving)
+</td>
+
+<td>
+Warning
+</td>
+
+<td>
+Kick
+</td>
+
+<td>
+1 Month
+</td>
+
+</tr>
+
+
+
+
+
+<tr>
+
+<td>
+Unrealistic Driving
+</td>
+
+<td>
+Warning
+</td>
+
+<td>
+Kick
+</td>
+
+<td>
+1 Month
+</td>
+
+</tr>
+
+
+
+
+
+<tr>
+
+<td>
+Unrealistic Avatar
+</td>
+
+<td>
+Warning
+</td>
+
+<td>
+Kick
+</td>
+
+<td>
+N/A
+</td>
+
+</tr>
+
+
+
+
+
+<tr>
+
+<td>
+No Roleplay Permissions
+</td>
+
+<td>
+Warning
+</td>
+
+<td>
+Kick
+</td>
+
+<td>
+N/A
+</td>
+
+</tr>
+
+
+
+
+
+<tr>
+
+<td>
+Using Whitelisted Vehicle Without Permission
+</td>
+
+<td>
+Warning
+</td>
+
+<td>
+Kick
+</td>
+
+<td>
+1 Month
+</td>
+
+</tr>
+
+
+
+
+
+<tr>
+
+<td>
+Member Disrespect
+</td>
+
+<td>
+Warning
+</td>
+
+<td>
+Kick
+</td>
+
+<td>
+1 Month
+</td>
+
+</tr>
+
+
+
+
+
+<tr>
+
+<td>
+Disrupting Roleplay
+</td>
+
+<td>
+Warning
+</td>
+
+<td>
+Kick
+</td>
+
+<td>
+1 Month
+</td>
+
+</tr>
+<tr>
+
+<td>
+Disrupting Moderation Scene
+</td>
+
+<td>
+Warning
+</td>
+
+<td>
+Kick
+</td>
+
+<td>
+1 Month
+</td>
+
+</tr>
+
+
+
+
+<tr>
+
+<td>
+Tool Abuse
+</td>
+
+<td>
+Warning
+</td>
+
+<td>
+Kick
+</td>
+
+<td>
+1 Month
+</td>
+
+</tr>
+
+
+
+
+<tr>
+
+<td>
+No Uniform/Livery
+</td>
+
+<td>
+Warning
+</td>
+
+<td>
+Kick
+</td>
+
+<td>
+N/A
+</td>
+
+</tr>
+
+
+
+
+<tr>
+
+<td>
+Breaking Safe Zones
+</td>
+
+<td>
+Warning
+</td>
+
+<td>
+Kick
+</td>
+
+<td>
+1 Month
+</td>
+
+</tr>
+
+
+
+
+<tr>
+
+<td>
+Respawning During Roleplay
+</td>
+
+<td>
+Warning
+</td>
+
+<td>
+Kick
+</td>
+
+<td>
+1 Month
+</td>
+
+</tr>
+
+
+
+
+<tr>
+
+<td>
+Cop Baiting
+</td>
+
+<td>
+Warning
+</td>
+
+<td>
+Kick
+</td>
+
+<td>
+1 Month
+</td>
+
+</tr>
+
+
+
+
+<tr>
+
+<td>
+Random Arresting
+</td>
+
+<td>
+Warning
+</td>
+
+<td>
+Kick
+</td>
+
+<td>
+1 Month
+</td>
+
+</tr>
+
+
+
+
+<tr>
+
+<td>
+Random Tazing
+</td>
+
+<td>
+Warning
+</td>
+
+<td>
+Kick
+</td>
+
+<td>
+1 Month
+</td>
+
+</tr>
+
+
+
+
+<tr>
+
+<td>
+Siren Spam
+</td>
+
+<td>
+Warning
+</td>
+
+<td>
+Kick
+</td>
+
+<td>
+1 Month
+</td>
+
+</tr>
+
+
+
+
+<tr>
+
+<td>
+Vehicle Spam
+</td>
+
+<td>
+Warning
+</td>
+
+<td>
+Kick
+</td>
+
+<td>
+1 Month
+</td>
+
+</tr>
+
+
+
+
+<tr>
+
+<td>
+Roadblocking Without RP
+</td>
+
+<td>
+Warning
+</td>
+
+<td>
+Kick
+</td>
+
+<td>
+1 Month
+</td>
+
+</tr>
+
+
+
+
+<tr>
+
+<td>
+Breaking Priority
+</td>
+
+<td>
+Warning
+</td>
+
+<td>
+Kick
+</td>
+
+<td>
+1-3 Months
+</td>
+
+</tr>
+
+
+
+
+<tr>
+
+<td>
+Auto Jailing
+</td>
+
+<td>
+Warning
+</td>
+
+<td>
+Kick
+</td>
+
+<td>
+1 Month
+</td>
+
+</tr>
+
+
+
+
+<tr>
+
+<td>
+RTAP (Respawning To Avoid Punishment)
+</td>
+
+<td>
+Kick
+</td>
+
+<td>
+Ban
+</td>
+
+<td>
+1-3 Months
+</td>
+
+</tr>
+
+
+
+
+<tr>
+
+<td>
+NITRP (No Intent To Roleplay)
+</td>
+
+<td>
+Warning
+</td>
+
+<td>
+Kick
+</td>
+
+<td>
+3-7 Months
+</td>
+
+</tr>
+
+
+
+
+<tr>
+
+<td>
+Staff RDM
+</td>
+
+<td>
+Kick
+</td>
+
+<td>
+Ban
+</td>
+
+<td>
+3 Months Until Appealed
+</td>
+
+</tr>
+
+
+
+
+<tr>
+
+<td>
+Staff VDM
+</td>
+
+<td>
+Kick
+</td>
+
+<td>
+Ban
+</td>
+
+<td>
+3 Months Until Appealed
+</td>
+
+</tr>
+
+
+
+
+<tr>
+
+<td>
+LTAP (Leaving To Avoid Punishment)
+</td>
+
+<td>
+Ban
+</td>
+
+<td>
+Ban
+</td>
+
+<td>
+Until Appealed
+</td>
+
+</tr>
+
+
+
+
+<tr>
+
+<td>
+Trolling
+</td>
+
+<td>
+Ban
+</td>
+
+<td>
+Longer Ban
+</td>
+
+<td>
+Until Appealed
+</td>
+
+</tr>
+
+
+
+
+<tr>
+
+<td>
+Staff Impersonation
+</td>
+
+<td>
+Kick
+</td>
+
+<td>
+Ban
+</td>
+
+<td>
+Until Appealed
+</td>
+
+</tr>
+
+
+
+
+<tr>
+
+<td>
+Bypassing Punishment
+</td>
+
+<td>
+Ban
+</td>
+
+<td>
+Ban
+</td>
+
+<td>
+Until Appealed
+</td>
+
+</tr>
+
+
+
+
+<tr>
+
+<td>
+Breaking Roblox TOS
+</td>
+
+<td>
+Ban
+</td>
+
+<td>
+Permanent Ban
+</td>
+
+<td>
+Permanent
+</td>
+
+</tr>
+
+
+
+
+<tr>
+
+<td>
+Exploiting / Cheating
+</td>
+
+<td>
+Permanent Ban
+</td>
+
+<td>
+Permanent Ban
+</td>
+
+<td>
+Permanent
+</td>
+
+</tr>
+
+
+
+
+<tr>
+
+<td>
+Script Execution
+</td>
+
+<td>
+Permanent Ban
+</td>
+
+<td>
+Permanent Ban
+</td>
+
+<td>
+Permanent
+</td>
+
+</tr>
+
+
+
+
+</table>
+
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
 
 <script>
-function openPage(index) {
-    let pages = document.querySelectorAll(".page");
-    let buttons = document.querySelectorAll(".sidebar button");
 
-    pages.forEach(p => p.classList.remove("active"));
-    buttons.forEach(b => b.classList.remove("active"));
 
-    pages[index].classList.add("active");
-    buttons[index].classList.add("active");
+function openPage(index){
 
-    // close mobile menu after click
-    document.getElementById("sidebar").classList.remove("active");
+
+let pages = document.querySelectorAll(".page");
+
+let buttons = document.querySelectorAll(".sidebar button");
+
+
+
+pages.forEach(page => {
+
+page.classList.remove("active");
+
+});
+
+
+
+buttons.forEach(button => {
+
+button.classList.remove("active");
+
+});
+
+
+
+pages[index].classList.add("active");
+
+buttons[index].classList.add("active");
+
+
+
+document.getElementById("sidebar").classList.remove("active");
+
+
 }
 
-function toggleMenu() {
-    document.getElementById("sidebar").classList.toggle("active");
+
+
+
+
+
+function toggleMenu(){
+
+
+document.getElementById("sidebar").classList.toggle("active");
+
+
 }
+
+
+
+
+
+
+
+function searchPunishments(){
+
+
+let input = document.getElementById("punishmentSearch").value.toLowerCase();
+
+
+let rows = document.querySelectorAll("#punishmentTable tr");
+
+
+
+rows.forEach((row,index)=>{
+
+
+if(index === 0) return;
+
+
+
+let text = row.innerText.toLowerCase();
+
+
+
+if(text.includes(input)){
+
+
+row.style.display = "";
+
+
+}
+
+else{
+
+
+row.style.display = "none";
+
+
+}
+
+
+});
+
+
+}
+
+
+
 </script>
 
+
+
 </body>
+
 </html>
